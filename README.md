@@ -1,4 +1,0 @@
-SpringExample
-=============
-
-IWDSA Spring Example

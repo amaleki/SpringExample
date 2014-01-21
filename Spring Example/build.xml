@@ -1,0 +1,24 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Spring-Example" default="init">
+	<property name="src" location="src"/>
+	<property name="build" location="antbuild"/>
+	<property name="dist"  location="dist"/>
+
+	<target name="init">
+		<mkdir dir="dist" />
+	</target>
+
+    <target name="clean">
+		<delete dir="dist" />
+	</target>
+
+    <target name="resolve" description="--> retrieve dependencies with ivy">
+    	<ivy:resolve/> 
+    	<ivy:report todir="${basedir}/reports" graph="false" xml="false"/>
+        <ivy:retrieve pattern="${basedir}/lib/[artifact]-[revision].[ext]" type="jar,bundle" conf="compile"  />
+    </target>
+	
+	<target name="clean-cache">
+		<ivy:cleancache/>
+	</target>
+	
+</project>
